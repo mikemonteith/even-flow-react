@@ -13,11 +13,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //lastScan: testScan,
       lastScan: null,
+      lastScanTime: null,
       stage: null,
       history: [],
-      page: 'home',
+      page: 'choose-stage',
+    }
+
+    // FOR DEBUG ONLY
+    this.state = {
+      ...this.state,
+      lastScan: testScan,
+      lastScanTime: Date.now(),
+      page: 'scan',
+      stage: { id: 1, label: "test" },
     }
   }
 
@@ -34,7 +43,7 @@ class App extends Component {
                 </div>
               </a>
             </div>
-
+            {/*
             <div className="nhsuk-promo">
               <a className="nhsuk-promo__link-wrapper" href="#" onClick={() => this.goTo('history')}>
                 <div className="nhsuk-promo__content">
@@ -42,6 +51,7 @@ class App extends Component {
                 </div>
               </a>
             </div>
+            */}
           </nav>
         )}
 
@@ -53,7 +63,7 @@ class App extends Component {
         )}
 
         {this.state.page === 'scan' && (
-          <ScanPage stage={this.state.stage} lastScan={this.state.lastScan} onDetected={this.onDetected.bind(this)} onStop={this.onStop.bind(this)} />
+          <ScanPage history={this.state.history} stage={this.state.stage} lastScan={this.state.lastScan} lastScanTime={this.state.lastScanTime} onDetected={this.onDetected.bind(this)} onStop={this.onStop.bind(this)} />
         )}
 
         {this.state.page === 'history' && (
@@ -82,10 +92,11 @@ class App extends Component {
 
     history.push({
       userId: lastScan.codeResult.code,
+      stage: { ...this.state.stage },
       startTime: lastScanTime,
       stopTime: stopTime,
       duration: stopTime - lastScanTime,
-    })
+    });
 
     this.setState({
       lastScan: null,

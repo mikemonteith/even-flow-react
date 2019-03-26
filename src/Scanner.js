@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Quagga from 'quagga';
 
+import HistoryPage from './HistoryPage';
+
 class Scanner extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,9 @@ class Scanner extends Component {
       <div className="scanner">
         <h1>Scan to begin session</h1>
         <div id="interactive" className="viewport" />
+
+        <h3>Previous scans</h3>
+        <HistoryPage history={this.props.history} />
       </div>
     );
   }
@@ -23,7 +28,7 @@ class Scanner extends Component {
         inputStream: {
             type : "LiveStream",
             constraints: {
-                width: 640,
+                width: document.querySelector('#interactive').getBoundingClientRect().width,
                 height: 480,
                 facingMode: "environment" // or user
             }

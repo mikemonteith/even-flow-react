@@ -7,10 +7,20 @@ class HistoryPage extends Component {
     return (
       <div className="history-page">
         {this.props.history.map(log => (
-          <p>ScanID: { log.userId }</p>
+          <p>
+            ScanID: { log.userId }
+            <br/>
+            Duration: { this.mins(log.duration) } mins
+            <br/>
+            Stage: { log.stage.label }
+          </p>
         ))}
       </div>
     )
+  }
+
+  mins(duration) {
+    return Math.floor(duration / 60000)
   }
 }
 

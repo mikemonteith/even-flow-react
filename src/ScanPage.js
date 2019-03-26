@@ -8,11 +8,11 @@ class ScanPage extends Component {
   render() {
     return (
       <div className="scan-page">
-        <p>{this.props.stage.label}</p>
+        <p>Stage: {this.props.stage.label}</p>
         {this.props.lastScan === null ? (
-          <Scanner onDetected={this.props.onDetected} />
+          <Scanner history={this.props.history} onDetected={this.props.onDetected} />
         ) : (
-          <Timer onStop={this.props.onStop} id={this.props.lastScan.codeResult.code }/>
+          <Timer onStop={this.props.onStop} startTime={this.props.lastScanTime} id={this.props.lastScan.codeResult.code }/>
         )}
       </div>
     )

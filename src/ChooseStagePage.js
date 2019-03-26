@@ -25,12 +25,14 @@ class ChooseStagePage extends Component {
         <div className="nhsuk-form-group">
           <fieldset className="nhsuk-fieldset" aria-describedby="example-hint">
             <legend class="nhsuk-fieldset__legend">
-              Choose your stage
+              Choose your stage:
             </legend>
-            <Checkbox label="Reception" name="test" id="1" onSelect={this.onSelect.bind(this)} />
-            <Checkbox label="Waiting Room" name="test" id="2" onSelect={this.onSelect.bind(this)} />
-            <Checkbox label="Consultancy" name="test" id="3" onSelect={this.onSelect.bind(this)} />
-            <Checkbox label="Biopsy" name="test" id="4" onSelect={this.onSelect.bind(this)} />
+            <div className="nhsuk-radios">
+              <Checkbox label="Reception" name="test" id="1" onSelect={this.onSelect.bind(this)} />
+              <Checkbox label="Waiting Room" name="test" id="2" onSelect={this.onSelect.bind(this)} />
+              <Checkbox label="Consultancy" name="test" id="3" onSelect={this.onSelect.bind(this)} />
+              <Checkbox label="Biopsy" name="test" id="4" onSelect={this.onSelect.bind(this)} />
+            </div>
           </fieldset>
         </div>
         <button className="nhsuk-button" onClick={this.go.bind(this)} >
