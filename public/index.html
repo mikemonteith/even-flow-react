@@ -23,6 +23,15 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <script>
+      // Make sure we are using https
+      if(document.location.host.search("surge.sh") !== -1) {
+        if(document.location.protocol.search("https") === -1) {
+          document.location.protocol = "https:";
+        }
+      }
+    </script>
   </head>
   <body>
 
