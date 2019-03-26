@@ -21,7 +21,7 @@ class App extends Component {
     }
 
     // FOR DEBUG ONLY
-    this.state = {
+    this._state = {
       ...this.state,
       lastScan: testScan,
       lastScanTime: Date.now(),

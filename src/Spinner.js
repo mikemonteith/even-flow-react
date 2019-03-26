@@ -5,10 +5,10 @@ class Spinner extends Component {
   render() {
     return (
       <div className="spinner">
-        <div class="clock">
-          <div class="frame">
-            <div class="number">{this.mins()}</div>
-            <div class="loader">Loading...</div>
+        <div className="clock">
+          <div className="frame">
+            <div className="number">{this.mins()}</div>
+            <div className="loader">Loading...</div>
             </div>
         </div>
       </div>
